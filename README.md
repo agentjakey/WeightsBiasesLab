@@ -1,4 +1,8 @@
-# Weights & Biases Lab
+# Neural Network Foundations Lab
+
+An interactive neural network foundations lab with three demos: weights and
+biases, activation functions, and layers and neurons. (Folder/package name:
+`WeightsBiasesLab`, from when it was a single demo.)
 
 A small, hands-on companion lab for an intro neural-networks lecture
 (Week 2A: Why Neural Networks?). Drop the deployed link into the slide where the

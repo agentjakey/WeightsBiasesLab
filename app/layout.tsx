@@ -22,22 +22,24 @@ const dmMono = DM_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Weights & Biases Lab',
+  title: 'Neural Network Foundations Lab',
   description:
-    'A tiny neuron, three sliders, one moving decision boundary. An interactive companion demo for understanding how weights and biases shape what a neuron learns.',
+    'Interactive neural network foundations lab with three demos: weights and biases, activation functions, and layers and neurons.',
   keywords: [
     'neural networks',
     'weights and biases',
+    'activation functions',
+    'layers and neurons',
     'decision boundary',
-    'perceptron',
     'sigmoid',
     'machine learning education',
     'interactive demo',
   ],
   authors: [{ name: 'Jacob Ortiz' }],
   openGraph: {
-    title: 'Weights & Biases Lab',
-    description: 'A tiny neuron. Three sliders. One moving decision boundary.',
+    title: 'Neural Network Foundations Lab',
+    description:
+      'Three small interactive demos for neurons, nonlinearity, and model capacity.',
     type: 'website',
   },
 }

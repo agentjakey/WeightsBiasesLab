@@ -16,12 +16,30 @@ const item = {
   },
 }
 
+const PARTS = [
+  {
+    n: 'Part 1',
+    title: 'Weights & Biases',
+    body: 'A single neuron and the decision boundary it draws.',
+  },
+  {
+    n: 'Part 2',
+    title: 'Activation Functions',
+    body: 'Why nonlinearity lets a network bend, not just tilt.',
+  },
+  {
+    n: 'Part 3',
+    title: 'Layers & Neurons',
+    body: 'How capacity helps approximate more complex patterns.',
+  },
+]
+
 export function Hero() {
   return (
     <section id="hero" className="border-b border-border">
       <motion.div
-        className="mx-auto px-8"
-        style={{ maxWidth: '720px', paddingTop: '120px', paddingBottom: '80px' }}
+        className="mx-auto max-w-[1100px] px-6"
+        style={{ paddingTop: '120px', paddingBottom: '72px' }}
         variants={container}
         initial="hidden"
         animate="show"
@@ -39,40 +57,48 @@ export function Hero() {
           Week 2A &middot; Why Neural Networks?
         </motion.p>
 
-        <motion.div variants={item}>
+        <motion.div variants={item} style={{ maxWidth: '760px' }}>
           <h1
             className="font-sans font-bold text-primary"
             style={{ fontSize: '64px', lineHeight: 1.05, letterSpacing: '-0.03em' }}
           >
-            Weights &amp; Biases Lab
+            Neural Network Foundations Lab
           </h1>
           <p
             className="font-sans font-normal text-secondary"
-            style={{ fontSize: '22px', marginTop: '14px', lineHeight: 1.4 }}
+            style={{ fontSize: '22px', marginTop: '16px', lineHeight: 1.45 }}
           >
-            A single neuron. Three sliders. One moving decision boundary.
+            Three small interactive demos for building intuition around neurons, nonlinearity, and
+            model capacity.
           </p>
         </motion.div>
 
         <motion.p
           variants={item}
-          className="font-serif italic text-secondary"
-          style={{ fontSize: '17px', lineHeight: 1.7, marginTop: '36px', marginBottom: '20px' }}
+          className="font-serif text-primary"
+          style={{ fontSize: '19px', lineHeight: 1.85, marginTop: '32px', maxWidth: '720px' }}
         >
-          &ldquo;Move the sliders. Watch a neuron redraw its decision boundary.&rdquo;
+          Explore weights and biases, activation functions, and the effect of adding more layers and
+          neurons. Each section is a real model running in the browser, not a canned animation, so
+          you can move the controls and watch the math respond.
         </motion.p>
 
-        <motion.p
+        {/* three-part summary row */}
+        <motion.div
           variants={item}
-          className="font-serif text-primary"
-          style={{ fontSize: '19px', lineHeight: 1.85 }}
+          className="grid grid-cols-1 gap-x-6 gap-y-6 border-t border-border sm:grid-cols-3"
+          style={{ marginTop: '40px', paddingTop: '32px' }}
         >
-          This is the smallest piece of a neural network: a single neuron computes z = w
-          <sub>1</sub>x<sub>1</sub> + w<sub>2</sub>x<sub>2</sub> + b, then squashes it with a sigmoid
-          to get a probability. The weights set the direction and importance of each input. The bias
-          slides the line. Together they are everything this neuron can learn, and stacking many of
-          them is how larger networks are built.
-        </motion.p>
+          {PARTS.map((p) => (
+            <div key={p.n}>
+              <span className="font-mono text-[11px] uppercase tracking-widest text-accent">
+                {p.n}
+              </span>
+              <h2 className="mt-2 font-sans text-[17px] font-semibold text-primary">{p.title}</h2>
+              <p className="mt-1.5 font-serif text-[14px] leading-[1.6] text-secondary">{p.body}</p>
+            </div>
+          ))}
+        </motion.div>
 
         <motion.div
           variants={item}
@@ -86,7 +112,7 @@ export function Hero() {
             Open the lab
           </a>
           <span className="font-sans text-secondary" style={{ fontSize: '12px', marginLeft: '4px' }}>
-            ~3 min &middot; nothing to install
+            3 interactive sections &middot; ~5 min &middot; nothing to install
           </span>
         </motion.div>
       </motion.div>

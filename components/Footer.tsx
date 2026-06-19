@@ -11,20 +11,21 @@ export function Footer() {
 
   return (
     <footer className="border-t border-border">
-      <div className="mx-auto max-w-[720px] px-6 py-16">
+      <div className="mx-auto max-w-[1100px] px-6 py-16">
         <div className="mb-12 grid grid-cols-1 gap-12 md:grid-cols-2">
           <div>
             <p className="mb-3.5 font-mono text-[11px] uppercase tracking-widest text-accent">
               About
             </p>
-            <p className="font-serif text-[16px] leading-[1.8] text-secondary">
+            <p className="max-w-[460px] font-serif text-[16px] leading-[1.8] text-secondary">
               Built as a companion demo for{' '}
               <span className="text-primary">Week 2A: Why Neural Networks?</span> by{' '}
               <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" style={linkStyle}>
                 {AUTHOR}
               </a>
-              . The neuron, the dataset, and the boundary are toy-sized on purpose. The point is to
-              feel how three numbers steer a real prediction.
+              . The examples are intentionally small and toy-sized. The goal is to build intuition
+              for three fundamentals: weights and biases, activation functions, and layers/neuron
+              capacity.
             </p>
           </div>
 
@@ -56,10 +57,11 @@ export function Footer() {
         <div className="border-t border-border pt-8">
           <p
             className="mb-4 font-serif text-[14px] italic leading-[1.7] text-faint"
-            style={{ maxWidth: '560px' }}
+            style={{ maxWidth: '620px' }}
           >
-            A single neuron is the smallest piece of a network. Once these three sliders feel
-            obvious, a layer is just many of them, and a deep net is just many layers.
+            The point is to make the basic pieces of neural networks feel concrete: how a neuron
+            moves a boundary, why activations introduce nonlinearity, and how more layers and
+            neurons increase model capacity.
           </p>
           <p className="font-sans text-[13px] leading-[1.7] text-secondary">
             Made by{' '}

@@ -1,5 +1,6 @@
-export const SITE_TITLE = 'Weights & Biases Lab'
-export const SITE_SUBTITLE = 'A tiny neuron. Three sliders. One moving decision boundary.'
+export const SITE_TITLE = 'Neural Network Foundations Lab'
+export const SITE_SUBTITLE =
+  'Three small interactive demos for neurons, nonlinearity, and model capacity.'
 export const AUTHOR = 'Jacob Ortiz'
 export const GITHUB_URL = 'https://github.com/agentjakey'
 export const UCSD_URL = 'https://ucsd.edu'
