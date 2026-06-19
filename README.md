@@ -1,4 +1,4 @@
-# Weights & Biases Lab
+# [Weights & Biases Lab ](https://weights-biases-lab.vercel.app/)
 
 A small, hands-on companion lab for an intro neural-networks lecture
 (Week 2A: Why Neural Networks?). Drop the deployed link into the slide where the
