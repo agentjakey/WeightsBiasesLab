@@ -1,12 +1,13 @@
 # Weights & Biases Lab
 
-A tiny neuron. Three sliders. One moving decision boundary.
-
-An interactive companion demo for the lecture slide **"Why weights and biases?"**
+A small, hands-on companion lab for an intro neural-networks lecture
 (Week 2A: Why Neural Networks?). Drop the deployed link into the slide where the
-empty box is, and let students drag the sliders during the talk.
+empty box is and click through it live. Every visualization is driven by a real
+forward pass and real training, never a faked animation.
 
-## What it teaches
+The lab has three tabs, each the next concept in the sequence.
+
+## Tab 1 - Weights & Biases
 
 A single neuron computes:
 
@@ -15,24 +16,46 @@ z    = w1 * x1 + w2 * x2 + b
 yhat = sigmoid(z)
 ```
 
-This is a real one-neuron logistic classifier, not a full neural network. It
-predicts class 1 when `z > 0`. A single `neuronForward(x1, x2, weights)` function
-is the source of truth for the probability field, the sample-point predictions,
-the hover readout, the accuracy meter, and the decision boundary. The lab makes
-three ideas tangible:
+A real one-neuron logistic classifier (not a full network). `neuronForward(x1, x2, weights)`
+in `lib/neuron.ts` is the single source of truth for the probability field, the
+sample-point predictions, the hover readout, the accuracy meter, and the `z = 0`
+boundary. Three sliders move the boundary live; presets (Reset, Rotate, Shift,
+Good fit, Bad fit) and a **Train (gradient descent)** button make weights and
+bias tangible.
 
 - **Weights** (`w1`, `w2`) rotate the boundary by changing how much each input matters.
 - **Bias** (`b`) shifts the boundary without changing the relative direction of the weights.
 - **Learning** means searching for weights and biases that fit the data.
 
-Move the sliders and the soft probability field, the `z = 0` boundary, the live
-equation, and the fit-on-samples score all update immediately. Hover anywhere on
-the plane to read `x1`, `x2`, `z`, and `sigmoid(z)` at that point. Presets
-(Reset, Rotate boundary, Shift boundary, Good fit, Bad fit) jump to instructive
-configurations, and **Train (gradient descent)** runs a short animated batch of
-real gradient descent on the fixed samples so you can watch the boundary settle.
+## Tab 2 - Activation Functions
 
-Larger neural networks are built by stacking many units exactly like this one.
+Two networks with the **same** architecture (input 2 to hidden 8 to output 1),
+trained side by side on a curved dataset (Moons / Circles / XOR). The only
+difference is the hidden activation:
+
+- **No activation** (identity): stacked linear layers collapse into one linear
+  transformation, so it can only ever draw a straight boundary.
+- **With activation** (tanh / ReLU): a real nonlinearity lets the network bend
+  the boundary and fit the curve.
+
+`lib/activationModels.ts` implements `mlpForward` plus real backprop / batch
+gradient descent on cross-entropy. The decision boundary is the true iso-0.5
+contour of the forward pass (marching squares), not a drawn shape.
+
+## Tab 3 - Layers & Neurons
+
+A 1D function-approximation demo: the network learns a fixed target
+`y = 0.55 sin(2.2x) + 0.28 sin(5.7x) + 0.12x` from seeded sample points. A
+capacity selector (Linear, 1x4, 1x16, 2x16, 3x32) swaps in real MLP regressors
+with tanh hidden layers and a linear output, trained with backprop + Adam in
+`lib/capacityModels.ts`. The prediction curve, train/test loss, and parameter
+count are all computed from the live model.
+
+The teaching outcome is emergent, not scripted: the linear model underfits, more
+neurons fit better, and the largest model (3x32, ~2,200 params) reaches the
+lowest **train** loss but a higher **test** loss than the 16-neuron model - a
+real overfitting signal. More capacity helps represent complex functions, but it
+is not free, and deeper is not always better.
 
 ## Stack
 
@@ -40,8 +63,8 @@ Next.js 16 (App Router), React 18, TypeScript, Tailwind CSS 3, framer-motion.
 Same conventions as the sibling project Failure Mode Atlas, including its exact
 color palette (cream `#FAFAF8` background, rust `#C2411C` accent, `#E4E2DB`
 borders, Sora / Lora / DM Mono type). No data layer, no backend, no extra
-dependencies. The visualization is a 2D canvas probability field with an SVG
-overlay.
+dependencies. Classification fields are a 2D canvas probability field with an SVG
+overlay; the regression view is SVG curves. All model math is plain TypeScript.
 
 ## Local setup
 

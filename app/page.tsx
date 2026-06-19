@@ -1,14 +1,12 @@
 import { Hero } from '@/components/Hero'
-import { NeuronLab } from '@/components/NeuronLab'
-import { TeachingCards } from '@/components/TeachingCards'
+import { LabTabs } from '@/components/LabTabs'
 import { Footer } from '@/components/Footer'
 
 export default function Page() {
   return (
     <div>
       <Hero />
-      <NeuronLab />
-      <TeachingCards />
+      <LabTabs />
       <Footer />
     </div>
   )
